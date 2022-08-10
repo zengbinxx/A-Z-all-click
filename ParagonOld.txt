@@ -1,0 +1,46 @@
+document.getElementById('new-case-composer-form').click()
+setTimeout(async () => {document.documentElement.scrollTo(0,600)}, 30)
+
+
+setTimeout(async () => {
+document.getElementById('text-subject').click()
+document.getElementById('subject').value='US 卖家资质审核 - 请根据本邮件提示更正您的卖家资料'
+
+document.getElementById('compTextArea').value='您好：\n\n由于以下原因，我们无法验证您提供的身份证：模糊不清。\n\n请在接下来的 30 天内提供卖家平台中验证部分列出的文件的扫描件或照片 （https://sellercentral.amazon.com/）。您需要上传要求您提供的全部文件，甚至包括我们已经验证的文件。\n\n请务必提供完整文件的清晰复件，并确保所有信息都清晰可见。\n\n请勿在回复本邮件时附带文件。出于安全原因，我们仅接受上传到卖家平台的文件。\n\n如果我们在接下来的 30 天内没有收到所需文件，则可能会禁止您在 Amazon.com、Amazon.ca 和 Amazon.com.mx 上销售。'
+}, 15)
+
+
+document.getElementById('queueName-select').click()
+setTimeout(async () => {document.getElementById('queueName-select_2').click()}, 30)
+
+
+
+document.getElementById('case-status-dropdown-select').click()
+setTimeout(async () => {document.getElementById('case-status-dropdown-select_2').click()}, 100)
+
+
+document.getElementById('case-reason-categories-categories-dropdown-select').click()
+setTimeout(async () => {document.getElementById('case-reason-categories-categories-dropdown-select_8').click()
+		        document.getElementById('case-reason-categories-reasons-dropdown-select').click()
+                        setTimeout(async () => {document.getElementById('case-reason-categories-reasons-dropdown-select_4').click()}, 50)
+
+	}, 100)
+
+
+
+
+
+setTimeout(async () => {
+
+document.getElementById('case-status-dropdown-select').click()
+setTimeout(async () => {document.getElementById('case-status-dropdown-select_2').click()}, 100)
+
+
+document.getElementById('case-reason-categories-categories-dropdown-select').click()
+setTimeout(async () => {document.getElementById('case-reason-categories-categories-dropdown-select_8').click()
+		        document.getElementById('case-reason-categories-reasons-dropdown-select').click()
+                        setTimeout(async () => {document.getElementById('case-reason-categories-reasons-dropdown-select_4').click()}, 50)
+
+	}, 100)
+
+}, 500)
