@@ -3,3 +3,9 @@ for(let i=0,len=a.length;i<len;i++){
     if(a[i].value==='calypso_answer_positive'){a[i].click()
     }
 }
+
+const inputs = document.querySelectorAll('input[value="calypso_answer_positive"]');
+inputs.forEach(input => input.click());
+// ...later in the code...
+// reuse the existing "inputs" variable
+inputs.forEach(input => console.log(input.value));
