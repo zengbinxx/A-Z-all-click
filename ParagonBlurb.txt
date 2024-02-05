@@ -1,0 +1,138 @@
+var inputElement = document.getElementById('katal-id-6');
+if (inputElement) {
+  inputElement.value = '卖家身份验证'; // 将值设置为“卖家身份验证”
+  
+  // 如果有需要触发的事件，比如`input`或`change`，可以这样触发
+  var event = new Event('input', { bubbles: true });
+  inputElement.dispatchEvent(event);
+}
+
+// 确定页面上的textarea元素
+var textarea = document.querySelector('textarea');
+
+// 如果找到了textarea元素，则填充文本
+if (textarea) {
+    textarea.value = '您好！\n\n我们已审核您提供的文件，但无法根据这些文件验证您的身份。\n\n因此，您的账户将继续处于未激活状态。\n\n为什么会发生这种情况？\n\n由于以下原因，我们不接受您提供的营业执照：\n\n-- 扫描件或照片清晰度低、不易阅读或模糊不清。我们只接受由政府签发的营业执照原件的高分辨率且清晰可读的扫描件或照片。\n\n要求提供的信息、全息图、水印和背景颜色图案都必须清晰可见。\n\n-- 不完整或有缺损。我们只接受由政府签发且包含要求提供的信息的完整营业执照，任何一边均不得有缺损。营业执照必须包含以下信息：企业运营名称、企业地址、业务类型、企业范围、企业资本、成立日期、营业执照注册号、政府印章、有效期、公司法定代表人姓名以及统一社会信用代码。\n\n-- 是电子副本。我们只接受由政府签发的营业执照原件的扫描件或照片。\n\n-- 您注册账户时在卖家平台中输入的编码与统一社会信用代码不一致。请在卖家平台中更新相应编码，使其与营业执照中的统一社会信用代码或注册号一致。\n\n-- 您注册账户时在卖家平台中输入的编码与营业执照注册号不一致。请在卖家平台中更新相应编码，使其与营业执照中的统一社会信用代码或注册号一致。\n\n-- 您注册账户时在卖家平台中输入的公司名称与营业执照中的公司名称不一致。请更新卖家平台中的公司名称，使其与营业执照中的公司名称一致。\n\n-- 我们无法在国家企业信用信息公示系统网站上验证您的公司信息。\n\n-- 我们无法完成验证，因为根据国家企业信用信息公示系统中的信息，您的公司目前位于“经营异常名录”中。在上传营业执照的新副本之前，请确保您的公司不在“经营异常名录”中。\n\n要详细了解我们的要求，请参阅“全球卖家身份验证”：\n\nhttps://sellercentral.amazon.com/gp/help/external/QRP483PDN88Q3M9 \n\n如何处理这种情况？\n\n请在收到此电子邮件通知后的 10 天内上传“身份验证”页面上列出的所有要求提供的文件的扫描件或照片。\n\n请确保您在卖家平台中输入的信息与文件中的信息一致。\n\n要提交要求提供的文件或更新您的信息，请登录卖家平台，然后按照屏幕上的说明操作：\n\nhttps://sellercentral.amazon.com \n\n请勿回复此电子邮件，并在附件中提供要求的文件。出于安全原因，我们只接受上传到卖家平台中“身份验证”页面的文件。\n\n如果我没有上传要求提供的文件，会怎么样？\n\n如果您未在收到此电子邮件通知后的 10 天内提供要求的信息，我们可能会暂停向您的亚马逊销售账户付款，也可能会停用您的账户。\n\n我们随时为您提供帮助\n\n如果您对我们的政策或要求有任何其他疑问，请联系销售伙伴支持：\n\nhttps://sellercentral.amazon.com/cu/contact-us \n\n卖家身份验证团队';
+}
+document.addEventListener('DOMContentLoaded', (event) => {
+    var textarea = document.querySelector('textarea');
+    if (textarea) {
+        textarea.value = '';
+    }
+});
+
+
+// 创建并触发input事件
+var event = new Event('input', {
+    bubbles: true,
+    cancelable: true,
+});
+
+// 触发事件
+textarea.dispatchEvent(event);
+
+// 找到并点击下拉列表来展开它
+var selectHeader =document.querySelectorAll('div.kat-select-container.small .select-header')[3];
+if (selectHeader) {
+  selectHeader.click();
+
+  // 设置一个短暂的延时等待下拉选项渲染
+  setTimeout(function() {
+    // 这里我们假设下拉选项是以div元素呈现的
+    // 我们遍历每个选项直到找到匹配的选项并点击它
+    var options = document.querySelectorAll('.select-options div'); // 假设选项是div元素
+    options.forEach(function(option) {
+      if (option.innerText.trim() === "Other or Non-TAM Actionable Cases") {
+        option.click();
+      }
+    });
+  }, 1000); // 这个延时可能需要根据实际页面加载选项的速度来调整
+} else {
+  console.error('The select header element was not found.');
+}
+
+// secornd reason code
+var selectHeader =document.querySelectorAll('div.kat-select-container.small .select-header')[4];
+if (selectHeader) {
+  selectHeader.click();
+
+  // 设置一个短暂的延时等待下拉选项渲染
+  setTimeout(function() {
+    // 这里我们假设下拉选项是以div元素呈现的
+    // 我们遍历每个选项直到找到匹配的选项并点击它
+    var options = document.querySelectorAll('.select-options div'); // 假设选项是div元素
+    options.forEach(function(option) {
+      if (option.innerText.trim() === "Other - No Applicable Reason Code") {
+        option.click();
+      }
+    });
+  }, 1000); // 这个延时可能需要根据实际页面加载选项的速度来调整
+} else {
+  console.error('The select header element was not found.');
+}
+
+// Resolve
+document.getElementById("katal-id-17").click() 
+
+
+// 上线版本
+var inputElement = document.getElementById('katal-id-6');
+if (inputElement) {
+  inputElement.value = '卖家身份验证'; 
+ 
+  var event = new Event('input', { bubbles: true });
+  inputElement.dispatchEvent(event);
+}
+
+
+var textarea = document.querySelector('textarea');
+if (textarea) {
+    textarea.value = '您好！\n\n我们已审核您提供的文件，但无法根据这些文件验证您的身份。\n\n因此，您的账户将继续处于未激活状态。\n\n为什么会发生这种情况？\n\n由于以下原因，我们不接受您提供的营业执照：\n\n-- 扫描件或照片清晰度低、不易阅读或模糊不清。我们只接受由政府签发的营业执照原件的高分辨率且清晰可读的扫描件或照片。要求提供的信息、全息图、水印和背景颜色图案都必须清晰可见。\n\n-- 不完整或有缺损。我们只接受由政府签发且包含要求提供的信息的完整营业执照，任何一边均不得有缺损。营业执照必须包含以下信息：企业运营名称、企业地址、业务类型、企业范围、企业资本、成立日期、营业执照注册号、政府印章、有效期、公司法定代表人姓名以及统一社会信用代码。\n\n-- 是电子副本。我们只接受由政府签发的营业执照原件的扫描件或照片。\n\n-- 您注册账户时在卖家平台中输入的编码与统一社会信用代码不一致。请在卖家平台中更新相应编码，使其与营业执照中的统一社会信用代码或注册号一致。\n\n-- 您注册账户时在卖家平台中输入的编码与营业执照注册号不一致。请在卖家平台中更新相应编码，使其与营业执照中的统一社会信用代码或注册号一致。\n\n-- 您注册账户时在卖家平台中输入的公司名称与营业执照中的公司名称不一致。请更新卖家平台中的公司名称，使其与营业执照中的公司名称一致。\n\n-- 我们无法在国家企业信用信息公示系统网站上验证您的公司信息。\n\n-- 我们无法完成验证，因为根据国家企业信用信息公示系统中的信息，您的公司目前位于“经营异常名录”中。在上传营业执照的新副本之前，请确保您的公司不在“经营异常名录”中。\n\n要详细了解我们的要求，请参阅“全球卖家身份验证”：\n\nhttps://sellercentral.amazon.com/gp/help/external/QRP483PDN88Q3M9 \n\n如何处理这种情况？\n\n请在收到此电子邮件通知后的 10 天内上传“身份验证”页面上列出的所有要求提供的文件的扫描件或照片。\n\n请确保您在卖家平台中输入的信息与文件中的信息一致。\n\n要提交要求提供的文件或更新您的信息，请登录卖家平台，然后按照屏幕上的说明操作：\n\nhttps://sellercentral.amazon.com \n\n请勿回复此电子邮件，并在附件中提供要求的文件。出于安全原因，我们只接受上传到卖家平台中“身份验证”页面的文件。\n\n如果我没有上传要求提供的文件，会怎么样？\n\n如果您未在收到此电子邮件通知后的 10 天内提供要求的信息，我们可能会暂停向您的亚马逊销售账户付款，也可能会停用您的账户。\n\n我们随时为您提供帮助\n\n如果您对我们的政策或要求有任何其他疑问，请联系销售伙伴支持：\n\nhttps://sellercentral.amazon.com/cu/contact-us \n\n卖家身份验证团队';
+}
+document.addEventListener('DOMContentLoaded', (event) => {
+    var textarea = document.querySelector('textarea');
+});
+
+
+var event = new Event('input', {
+    bubbles: true,
+    cancelable: true,
+});
+
+
+textarea.dispatchEvent(event);
+
+var selectHeader =document.querySelectorAll('div.kat-select-container.small .select-header')[3];
+if (selectHeader) {
+  selectHeader.click();
+
+  setTimeout(function() {
+    var options = document.querySelectorAll('.select-options div'); 
+    options.forEach(function(option) {
+      if (option.innerText.trim() === "Other or Non-TAM Actionable Cases") {
+        option.click();
+      }
+	
+    });
+  }, 800); 
+} 
+
+setTimeout(function(){
+var selectHeader1 =document.querySelectorAll('div.kat-select-container.small .select-header')[4];
+if (selectHeader1) {
+  	selectHeader1.click();
+
+  	setTimeout(function() {
+   
+    	var options1 = document.querySelectorAll('.select-options div'); 
+   	options1.forEach(function(option) {
+      		if (option.innerText.trim() === "Other - No Applicable Reason Code") {
+        option.click();
+      }
+    });
+  }, 800); 
+} 
+},1000)
+
+// Resolve
+document.getElementById("katal-id-17").click() 
