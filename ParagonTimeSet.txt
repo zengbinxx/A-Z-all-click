@@ -1,0 +1,65 @@
+let stateText = $('#ccp-current-state-text'),
+    Available = $('#ccp-state-Available'),
+    onBreak = $('#ccp-state-Break'),
+    atLunch = $('#ccp-state-Lunch'),
+    inAmeeting = $('#ccp-state-Meeting'),
+    offLine = $('#ccp-state-Offline');
+
+function ParagonTimeSet() {
+
+    let current = new Date(),
+        Hour = current.getHours(),
+        Minute = current.getMinutes();
+
+    switch (Hour) {
+	 case 8:
+            if (Minute >= 0 && Minute <= 10) {
+                setTimeout(async() => {
+                    stateText.click()
+                    setTimeout(async() => { Available.click() }, 300)
+                }, 50);
+            };
+            setTimeout(3000000); 
+            break;
+
+
+        case 15:
+            if (Minute >= 15 && Minute <= 20) {
+                setTimeout(async() => {
+                    stateText.click()
+                    setTimeout(async() => { atLunch.click() }, 50)
+                    setTimeout(async() => { onBreak.click() }, 3600000)
+                }, 300);
+            };
+            break;
+
+        case 16:
+            if (Minute >= 45 && Minute <= 50) {
+                setTimeout(async() => {
+                    stateText.click()
+                    setTimeout(async() => {inAmeeting.click() }, 100)
+                }, 300);
+            };
+            break;
+
+
+        case 17:
+            if (Minute >= 0 && Minute <= 5) {
+                setTimeout(async() => {
+                    stateText.click()
+                    setTimeout(async() => { offLine.click() }, 50)
+                }, 300);
+            };
+            break;
+
+        default:break;
+    };
+}
+
+ParagonTimeSet() 
+
+let SetTimeID = setInterval(ParagonTimeSet, 600000)
+
+setTimeout(() => {
+    clearInterval(SetTimeID);
+}, 32400000)
