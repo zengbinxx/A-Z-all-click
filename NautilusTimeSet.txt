@@ -1,0 +1,161 @@
+V1:
+
+// 获取下拉菜单元素
+var statusDropdown = document.getElementById('nautilus-gacd-status-dropdown');
+
+// 检查是否找到了下拉菜单
+if (statusDropdown) {
+  // 设置值为'Available'的选项
+  statusDropdown.value = 'Available';
+
+  // 触发change事件以确保任何与此下拉菜单关联的事件处理程序被调用
+  if (typeof(Event) === 'function') {
+    var event = new Event('change', { 'bubbles': true, 'cancelable': true });
+    statusDropdown.dispatchEvent(event);
+  } else { // 为了兼容旧的浏览器
+    var event = document.createEvent('Event');
+    event.initEvent('change', true, true);
+    statusDropdown.dispatchEvent(event);
+  }
+} else {
+  console.log('Status dropdown not found.');
+}
+
+
+
+
+V2:
+
+var statusDropdown = document.getElementById('nautilus-gacd-status-dropdown');
+
+let s1 = "Available",
+    s2 = "Break",
+    s3 = "Lunch",
+    s4 = "Meeting",
+    s5 = "Offline";
+
+
+setTimeout(async() => {
+	if (statusDropdown) {
+  
+  		statusDropdown.value = s1;
+		if (typeof(Event) === 'function') {
+    			var event = new Event('change', { 'bubbles': true, 'cancelable': true });
+    		statusDropdown.dispatchEvent(event);
+  		} else { 
+   			 var event = document.createEvent('Event');
+   		 event.initEvent('change', true, true);
+    		 statusDropdown.dispatchEvent(event);
+  			}
+		} else {
+ 		 console.log('Status dropdown not found.');
+		}	
+   }, 30*60*1000)
+
+
+
+V2-1:
+
+var statusDropdown = document.getElementById('nautilus-gacd-status-dropdown');
+
+let s1 = "Available",
+    s2 = "Break",
+    s3 = "Lunch",
+    s4 = "Meeting",
+    s5 = "Offline";
+
+
+setTimeout(async() => {
+  		statusDropdown.value = s1;
+    		var event = new Event('change', { 'bubbles': true, 'cancelable': true });
+    		statusDropdown.dispatchEvent(event);
+  		
+   }, 30*60*1000)
+
+
+
+
+
+
+
+
+V3:
+var statusDropdown = document.getElementById('nautilus-gacd-status-dropdown');
+
+let s1 = "Available",
+    s2 = "Break",
+    s3 = "Lunch",
+    s4 = "Meeting",
+    s5 = "Offline";
+
+function NautilusTimeSet() {
+
+    let current = new Date(),
+        Hour = current.getHours(),
+        Minute = current.getMinutes();
+
+    switch (Hour) {
+	 case 7:
+            if (Minute >= 55 && Minute <= 59) {
+                setTimeout(async() => {
+                    statusDropdown.value = s1;
+		    var event = new Event('change', { 'bubbles': true, 'cancelable': true });
+    		statusDropdown.dispatchEvent(event);
+                }, 50);
+            };
+            setTimeout(5*60*1000); 
+            break;
+
+
+        case 12:
+            if (Minute >= 0 && Minute <= 5) {
+                setTimeout(async() => {
+                    statusDropdown.value = s3;
+		    var event = new Event('change', { 'bubbles': true, 'cancelable': true });
+    		statusDropdown.dispatchEvent(event);   
+                }, 300);
+            };
+            break;
+
+	case 13:
+            if (Minute >= 0 && Minute <= 5) {
+                setTimeout(async() => {
+                    statusDropdown.value = s1;
+		    var event = new Event('change', { 'bubbles': true, 'cancelable': true });
+    		statusDropdown.dispatchEvent(event);   
+                }, 300);
+            };
+            break;
+
+        case 16:
+            if (Minute >= 45 && Minute <= 50) {
+                setTimeout(async() => {
+                    statusDropdown.value = s4;
+		    var event = new Event('change', { 'bubbles': true, 'cancelable': true });
+    		statusDropdown.dispatchEvent(event);   
+                }, 300);
+            };
+            break;
+
+
+        case 17:
+            if (Minute >= 0 && Minute <= 5) {
+                setTimeout(async() => {
+                   statusDropdown.value = s4;
+		   var event = new Event('change', { 'bubbles': true, 'cancelable': true });
+    		statusDropdown.dispatchEvent(event);   
+                }, 300);
+            };
+            break;
+
+        default:break;
+    };
+}
+
+NautilusTimeSet() 
+
+let SetTimeID = setInterval(NautilusTimeSet, 3*60*1000)
+
+setTimeout(() => {
+    clearInterval(SetTimeID);
+}, 32400000)
