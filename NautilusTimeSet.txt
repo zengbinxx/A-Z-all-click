@@ -159,3 +159,122 @@ let SetTimeID = setInterval(NautilusTimeSet, 3*60*1000)
 setTimeout(() => {
     clearInterval(SetTimeID);
 }, 32400000)
+
+
+Chatgpt4.0 v:
+const statusDropdown = document.getElementById('nautilus-gacd-status-dropdown');
+
+const statuses = {
+  s1: "Available",
+  s2: "Break",
+  s3: "Lunch",
+  s4: "Meeting",
+  s5: "Offline"
+};
+
+function dispatchStatusChange(status) {
+  if (statusDropdown) {
+    statusDropdown.value = status;
+    const event = new Event('change', { 'bubbles': true, 'cancelable': true });
+    statusDropdown.dispatchEvent(event);
+  }
+}
+
+function setStatusDuringTimeRange(hour, startMinute, endMinute, status, delay) {
+  const current = new Date();
+  const currentHour = current.getHours();
+  const currentMinute = current.getMinutes();
+
+  if (currentHour === hour && currentMinute >= startMinute && currentMinute <= endMinute) {
+    setTimeout(() => dispatchStatusChange(status), delay);
+  }
+}
+
+function NautilusTimeSet() {
+  setStatusDuringTimeRange(7, 55, 59, statuses.s1, 50);
+  setStatusDuringTimeRange(12, 0, 5, statuses.s3, 300);
+  setStatusDuringTimeRange(13, 0, 5, statuses.s1, 300);
+  setStatusDuringTimeRange(16, 45, 50, statuses.s4, 300);
+  setStatusDuringTimeRange(17, 0, 5, statuses.s4, 300);
+}
+
+NautilusTimeSet();
+
+const SetTimeID = setInterval(NautilusTimeSet, 3 * 60 * 1000);
+
+setTimeout(() => {
+  clearInterval(SetTimeID);
+}, 32400000); // 9 hours
+
+
+ChatGPT 4.0 V2:
+const statusDropdown = document.getElementById('nautilus-gacd-status-dropdown');
+
+const statuses = {
+  s1: "Available",
+  s2: "Break",
+  s3: "Lunch",
+  s4: "Meeting",
+  s5: "Offline"
+};
+
+let isPaused = false;
+
+function dispatchStatusChange(status) {
+  if (statusDropdown) {
+    statusDropdown.value = status;
+    const event = new Event('change', { 'bubbles': true, 'cancelable': true });
+    statusDropdown.dispatchEvent(event);
+  }
+}
+
+// Add event listeners to the dropdown for s2 and s3 selections
+if (statusDropdown) {
+  statusDropdown.addEventListener('change', function() {
+    if (statusDropdown.value === statuses.s3) {
+      // Change back to s1 after 1 hour
+      setTimeout(() => dispatchStatusChange(statuses.s1), 3600000);
+    } else if (statusDropdown.value === statuses.s2) {
+      // Change back to s1 after 30 minutes
+      setTimeout(() => dispatchStatusChange(statuses.s1), 1800000);
+    } else if (statusDropdown.value === statuses.s5) {
+      // If status is s5, clear the interval and exit the script
+      clearInterval(SetTimeID);
+      console.log('Program exited because status is s5.');
+      return;
+    }
+  });
+}
+
+function NautilusTimeSet() {
+  const current = new Date();
+  const currentHour = current.getHours();
+
+  // Check if it's 8 AM and not paused
+  if (currentHour === 8) {
+    dispatchStatusChange(statuses.s1);
+    isPaused = true;
+
+    setTimeout(() => {
+      isPaused = false;
+    }, 3600000); // Resume after 1 hour
+  }
+  
+  // Check if it's 5 PM
+  else if (currentHour === 17) {
+    dispatchStatusChange(statuses.s5);
+    isPaused = true;
+    
+  }
+}
+
+// Set an interval to check the time every minute
+const SetTimeID = setInterval(NautilusTimeSet, 60000); // Check every minute
+
+// Clear the interval after 9 hours (if needed)
+// This might not be necessary depending on when you start the script
+// and if you want it to run indefinitely or just during business hours
+setTimeout(() => {
+  clearInterval(SetTimeID);
+}, 32400000); // 9 hours
+
