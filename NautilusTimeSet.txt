@@ -270,10 +270,5 @@ function NautilusTimeSet() {
 // Set an interval to check the time every minute
 const SetTimeID = setInterval(NautilusTimeSet, 60000); // Check every minute
 
-// Clear the interval after 9 hours (if needed)
-// This might not be necessary depending on when you start the script
-// and if you want it to run indefinitely or just during business hours
-setTimeout(() => {
-  clearInterval(SetTimeID);
-}, 32400000); // 9 hours
+
 
