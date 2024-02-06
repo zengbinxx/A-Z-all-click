@@ -28,17 +28,13 @@ function getDelayUntil(hour) {
   var now = new Date();
   var target = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, 0, 0, 0); // 设置目标时间为今天的8点
 
-  // 如果现在时间超过了目标时间，设置目标为明天的这个时间
-
-  return target - now; // 返回延迟的毫秒数
+  return target - now; 
 }
 
-// 您想要执行的点击函数
 function clickButton() {
   var button = document.querySelector('button[title="Record Timestamp"]'); 
   if (button) button.click();
 }
 
-// 设置定时器
-var delay = getDelayUntil(8); // 获取现在到早上8点的延迟毫秒数
+var delay = getDelayUntil(8); 
 setTimeout(clickButton, delay);
