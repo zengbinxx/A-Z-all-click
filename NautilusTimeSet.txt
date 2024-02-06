@@ -263,7 +263,6 @@ function NautilusTimeSet() {
   // Check if it's 5 PM
   else if (currentHour === 17) {
     dispatchStatusChange(statuses.s5);
-    isPaused = true;
     
   }
 }
