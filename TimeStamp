@@ -20,6 +20,6 @@ function clickButton() {
 }
 
 // 设置定时器
-var delay = getDelayUntil(7, 55); // 获取现在到早上7点55分的延迟毫秒数
+var delay = getDelayUntil(8, 0); // 获取现在到早上7点55分的延迟毫秒数
 setTimeout(clickButton, delay);
 
