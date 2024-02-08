@@ -14,7 +14,7 @@ function getDelayUntil(hour, minute) {
 
 // 您想要执行的点击函数
 function clickButton() {
-  var button = document.getElementById('IDnumber'); // 请将'IDnumber'替换为实际的按钮ID
+  var button = document.querySelector('button[title="Name"]');  // 请将'Name'替换为实际的按钮ID
   if (button) button.click();
   else console.error('Button not found');
 }
