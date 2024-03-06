@@ -63,3 +63,53 @@ let SetTimeID = setInterval(ParagonTimeSet, 600000)
 setTimeout(() => {
     clearInterval(SetTimeID);
 }, 32400000)
+
+// ChatGPT 优化版：
+// Cache jQuery selectors for performance and readability
+const stateSelectors = {
+    Available: $('#ccp-state-Available'),
+    Break: $('#ccp-state-Break'),
+    Lunch: $('#ccp-state-Lunch'),
+    Meeting: $('#ccp-state-Meeting'),
+    Offline: $('#ccp-state-Offline')
+};
+
+// Function to simulate click with delay
+function simulateClick(selector, delay = 0) {
+    setTimeout(() => {
+        selector.click();
+    }, delay);
+}
+
+// Main function to set state based on time
+function setStateBasedOnTime() {
+    const currentTime = new Date();
+    const hour = currentTime.getHours();
+    const minute = currentTime.getMinutes();
+
+    // Click the state text to initiate state change
+    simulateClick($('#ccp-current-state-text'), 50);
+
+    // Determine state based on current time and simulate clicks accordingly
+    if (hour === 8 && minute >= 0 && minute <= 10) {
+        simulateClick(stateSelectors.Available, 350); // Delay accounts for initial click
+    } else if (hour === 15 && minute >= 15 && minute <= 20) {
+        simulateClick(stateSelectors.Lunch, 350);
+        // Assuming you meant to set a delay for the 'onBreak' click after 'atLunch'
+        simulateClick(stateSelectors.Break, 360350); // Adjusted to include initial delay
+    } else if (hour === 16 && minute >= 45 && minute <= 50) {
+        simulateClick(stateSelectors.Meeting, 350);
+    } else if (hour === 17 && minute >= 0 && minute <= 5) {
+        simulateClick(stateSelectors.Offline, 350);
+    }
+    // No need for default case if no action is required
+}
+
+// Initialize the state setting process and set an interval
+setStateBasedOnTime();
+let setTimeID = setInterval(setStateBasedOnTime, 600000); // Refresh every 10 minutes
+
+// Stop the interval after 9 hours
+setTimeout(() => {
+    clearInterval(setTimeID);
+}, 32400000); // 9 hours in milliseconds
