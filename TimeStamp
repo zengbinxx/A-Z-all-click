@@ -23,3 +23,42 @@ function clickButton() {
 var delay = getDelayUntil(8, 0); // 获取现在到早上7点55分的延迟毫秒数
 setTimeout(clickButton, delay);
 
+
+online:
+// 7:55 am
+function getDelayUntil(hour, minute) {
+  var now = new Date();
+  var target = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute, 0, 0); 
+
+  return target - now; 
+}
+
+function clickButton() {
+  var button = document.querySelector('button[title="Record Timestamp"]'); 
+  if (button) button.click();
+  else console.error('Button not found');
+}
+
+var delay = getDelayUntil(7,55); 
+setTimeout(clickButton, delay + 10000);
+
+
+
+// 5 pm
+function getDelayUntil(hour) {
+  var now = new Date();
+  var target = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, 0, 0, 0); 
+
+  return target - now; 
+}
+
+function clickButton() {
+  var button = document.querySelector('button[title="Record Timestamp"]'); 
+  if (button) button.click();
+  else console.error('Button not found');
+}
+
+var delay = getDelayUntil(17); 
+setTimeout(clickButton, delay+10000);
+
+
