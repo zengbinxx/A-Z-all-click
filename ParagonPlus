@@ -1,1 +1,34 @@
+const stateSelectors = {
+    Available: $('#ccp-state-Available'),
+    Break: $('#ccp-state-Break'),
+    Lunch: $('#ccp-state-Lunch'),
+    Meeting: $('#ccp-state-Meeting'),
+    Offline: $('#ccp-state-Offline')
+};
+
+// Function to simulate click with delay
+function simulateClick(selector, delay = 0) {
+    setTimeout(() => {
+        selector.click();
+    }, delay);
+}
+
+// Main function to set state based on time
+function setStateBasedOnTime() {
+    const currentTime = new Date();
+    const hour = currentTime.getHours();
+    const minute = currentTime.getMinutes();
+
+    // Click the state text to initiate state change
+    simulateClick($('#ccp-current-state-text'), 50);
+
+    // Determine state based on current time and simulate clicks accordingly
+    if (hour === 8 && minute >= 0 && minute <= 5) {
+        simulateClick(stateSelectors.Available, 350); // Delay accounts for initial click
+    } else if (hour === 17 && minute >= 0 && minute <= 5) {
+        simulateClick(stateSelectors.Offline, 350);
+    }
+ 
+}
+
 
