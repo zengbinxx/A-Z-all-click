@@ -9,3 +9,5 @@ inputs.forEach(input => input.click());
 // ...later in the code...
 // reuse the existing "inputs" variable
 inputs.forEach(input => console.log(input.value));
+
+setTimeout(async () => {  document.getElementById('nautilusOutcomeSubmitButton').click()}, 12*60*1000)
