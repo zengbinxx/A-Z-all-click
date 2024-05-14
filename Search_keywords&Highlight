@@ -1,0 +1,31 @@
+// 万能版(全搜版)
+const keywords = ["电话交换", "电邮"];
+function highlightKeywords() {
+  const elements = document.querySelectorAll("i");
+  elements.forEach(element => { 
+    if (element.textContent) {
+      keywords.forEach(keyword => { 
+        if (element.textContent.includes(keyword)) {
+          element.innerHTML = element.innerHTML.replace(new RegExp(keyword, 'g'), `<span style='background-color: yellow'>${keyword}</span>`);
+        }
+      });
+    }
+  });
+}
+highlightKeywords();
+
+// 定位版
+function highlightKeywords() {
+    const element = document.querySelectorAll('strong')[3]; // 直接访问第4个<strong>元素
+
+    // 检查元素是否包含关键词并进行替换
+    if (element && element.textContent) {
+        keywords.forEach(keyword => {
+            if (element.textContent.includes(keyword)) {
+                element.innerHTML = element.innerHTML.replace(new RegExp(keyword, 'g'), `<span style='background-color: yellow'>${keyword}</span>`);
+            }
+        });
+    }
+}
+
+
