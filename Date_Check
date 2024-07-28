@@ -1,0 +1,32 @@
+function checkAndHighlightBirthDate() {
+    let idNumberElement = document.querySelectorAll('strong')[4];
+    let birthDateElement = document.querySelectorAll('strong')[3];
+
+    if (idNumberElement && birthDateElement) {
+        // 获取身份证号和出生日期
+        let idNumber = idNumberElement.textContent.trim();
+        let birthDate = birthDateElement.textContent.trim();
+
+        // 提取身份证号中的出生日期部分
+        let year = idNumber.substring(6, 10);
+        let month = idNumber.substring(10, 12);
+        let day = idNumber.substring(12, 14);
+
+        // 将出生日期转换为相同的格式
+        let formattedBirthDate = `${day}/${month}/${year}`;
+
+        // 进行匹配
+        if (birthDate === formattedBirthDate) {
+            // 匹配成功，将元素背景色改为绿色
+            birthDateElement.style.backgroundColor = 'green';
+        } else {
+            // 匹配失败，将元素背景色改为红色
+            birthDateElement.style.backgroundColor = 'red';
+        }
+    } else {
+        console.error('找不到身份证号或出生日期的元素');
+    }
+}
+
+// 调用函数
+checkAndHighlightBirthDate();
